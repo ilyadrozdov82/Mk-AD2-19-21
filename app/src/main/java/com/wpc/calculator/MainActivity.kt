@@ -1,11 +1,14 @@
 package com.wpc.calculator
 
+import ParsToCalc
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.Exception
+import android.view.Gravity
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,35 +42,42 @@ class MainActivity : AppCompatActivity() {
 
         back_btn.setOnClickListener {
             val str = math_operation.text.toString()
-            if(str.isNotEmpty())
-                math_operation.text = str.substring(0, str.length-1)
+            if (str.isNotEmpty())
+                math_operation.text = str.substring(0, str.length - 1)
             result_text.text = ""
         }
 
         equal_btn.setOnClickListener {
             try {
+                val result = ParsToCalc().calculate(math_operation.text.toString())
                 // создание объекта класса подключенной библиотеки exp4j ."инициализировали"
-                val ex = ExpressionBuilder(math_operation.text.toString()).build()
-                val result = ex.evaluate()// .(возвращает значение выражения строки)
+                //val ex = ExpressionBuilder(math_operation.text.toString()).build()
+                //val result = ex.evaluate()// возвращает значение выражения строки
+
 
                 val longRes = result.toLong()
-                if(result == longRes.toDouble())
+                if (result == longRes.toDouble())
                     result_text.text = longRes.toString()
                 else
                     result_text.text = result.toString()
 
 
-            }catch (e:Exception){
-                Log.d("Error", "message: ${e.message}")
+            } catch (e: Exception) {
+                //Log.d("Error", "message: ${e.message}")
+                val toast = Toast.makeText(this, "Error: message: ${e.message}", Toast.LENGTH_LONG)
+                toast.show()
             }
         }
     }
-    fun setTextFields(str: String){
+
+    fun setTextFields(str: String) {
         // перенос результата в поле ввода при попытке ввода дополнительных значений
-        if(result_text.text != ""){
+        if (result_text.text != "") {
             math_operation.text = result_text.text
             result_text.text = ""
         }
         math_operation.append(str)
     }
+
+    // TODO add logic
 }

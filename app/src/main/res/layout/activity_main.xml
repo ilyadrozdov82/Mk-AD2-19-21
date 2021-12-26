@@ -14,8 +14,9 @@
         android:layout_height="80sp"
         android:ellipsize="start"
         android:gravity="end"
-        android:textColor="@android:color/white"
-        android:textSize="40sp" />
+        android:textColor="#FAFAFA"
+        android:textSize="50sp"
+        />
 
     <TextView
         android:id="@+id/result_text"
@@ -24,8 +25,9 @@
         android:ellipsize="end"
         android:gravity="end"
         android:singleLine="true"
-        android:textColor="@android:color/white"
-        android:textSize="30sp" />
+        android:textColor="#FAFAFA"
+        android:textSize="50sp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,7 +44,7 @@
                 style="@style/ActionButton"
                 android:id="@+id/all_clear_btn"
                 android:text="AC"
-                android:textColor="@color/teal_200"
+                android:textColor="#80D50000"
                 android:textStyle="bold"
                 />
 
@@ -85,7 +87,7 @@
             <TextView
                 style="@style/ActionButton"
                 android:id="@+id/multiply_btn"
-                android:text="*" />
+                android:text="X" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -162,7 +164,7 @@
                 style="@style/ActionButton"
                 android:id="@+id/back_btn"
                 android:text="⌫"
-                android:textColor="@color/teal_200"
+                android:textColor="#80D50000"
                 android:textStyle="bold"/>
 
             <TextView
